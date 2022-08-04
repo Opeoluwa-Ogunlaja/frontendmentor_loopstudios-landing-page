@@ -1,0 +1,175 @@
+.creations__header{
+    text-align: center;
+    grid-area: hd;
+    
+
+    @include big{
+        text-align: initial;
+    }
+}
+
+.creations__header--title{
+    @include josefin;
+    text-transform: uppercase;
+    font-size: 2rem;
+
+    @include big{
+        font-size: 3rem;
+    }
+}
+
+.creations__cards{
+    grid-area: cds;
+    grid-auto-rows: 8rem;
+    column-gap: initial;
+    row-gap: 1.5rem;
+
+    @include big{
+        grid-template-columns: repeat(4, 1fr);
+        column-gap: 1.5rem;
+        grid-auto-rows: 27rem;
+    }
+
+    @include md{
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 1.5rem;
+    }
+
+    @include small{
+        grid-template-columns: initial;
+        grid-auto-rows: 8rem;
+        column-gap: initial;
+        row-gap: 1.5rem;
+        justify-content: initial;
+    }
+}
+
+.creations__card{
+    @include cover;
+    background-position: center center;
+    transition: background-color .2s ease;
+    padding-top: initial;
+
+    &:hover{
+        background-color: rgb(255 255 255 / .7);
+        background-blend-mode: color;
+        .creations__card-title{
+            background: initial;
+            .creations__card-title--text{
+                color: $black;
+                
+                @include big{
+
+                }
+            }
+        }
+    }
+
+    @include big{
+        padding-top: calc((35/100) * 28rem);
+    }
+}
+
+.creations__card-title{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+    max-width: 50%;
+    padding-left: 1.5rem;
+    padding-bottom: 1.25rem;
+    background: linear-gradient(to right, rgb(0 0 0 / .5), rgb(0 0 0 / 0));
+    transition: color .1s ease;
+    
+    @include big{
+        max-width: 100%;
+        padding-bottom: 2rem;
+        @include px(2rem);
+        background: linear-gradient(to top, rgb(0 0 0 / .7), rgb(0 0 0 / 0));
+    }
+}
+
+.creations__card-title--text{
+    color: $white;
+    @include josefin;
+    @include font(1rem, josefin);
+    text-transform: uppercase;
+    max-width: 9ch;
+
+    @include big{
+        @include font(2rem, josefin);
+    }
+}
+
+.creations__cta--btn-container{
+    grid-area: btn;
+    display: flex;
+    justify-content: center;
+
+    @include big{
+        justify-content: flex-end;
+        align-items: center;
+    }
+}
+
+.creations__cta--btn{
+    @include py(.75rem);
+    @include px(3rem);
+    background-color: $white;
+    border: 1px solid $black;
+    text-transform: uppercase;
+    @include alata;
+    font-size: 1rem;
+    letter-spacing: 3px;
+    color: $black;
+    font-weight: 400;
+    
+
+    &:hover{
+        transition: color .3s;
+        transition: background-color .2s ease .1s;
+        color: $white;
+        background-color: $black;
+    }
+
+    @include big{
+        @include center-stuff(initial);
+        @include mx(0px);
+        font-size: 1.25rem;
+        @include py(.75rem);
+        @include px(2.5rem);
+    }
+}
+
+.creations{
+    margin-top: 4rem;
+    display: grid;
+
+    @include big{
+        margin-top: 10rem;
+        grid-template-areas: 
+            "hd ... ... ... btn"
+            "cds cds cds cds cds"
+        ;
+        row-gap: 4rem;
+        align-items: center;
+    }
+
+    @include md{
+        grid-template-areas: 
+            "hd ... ... btn"
+            "cds cds cds cds"
+        ;
+        row-gap: 1.5rem;
+        align-items: center;
+    }
+
+    @include mobile{
+        grid-template-areas: 
+            "hd"
+            "cds"
+            "btn"
+        ;
+        row-gap: 3rem;
+    }
+}

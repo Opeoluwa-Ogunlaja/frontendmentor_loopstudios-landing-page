@@ -1,0 +1,17 @@
+.main-container{
+    @include big{
+        @include px(10rem);
+    }
+
+    @include md{
+        @include px(4rem);
+    }
+
+    @include mobile{
+        @include px(1.5rem);
+    }
+}
+
+.grid{
+    display: grid;
+}

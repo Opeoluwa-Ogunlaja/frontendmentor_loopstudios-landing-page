@@ -1,0 +1,179 @@
+.intro-section{
+    background-image: url(./images/mobile/image-hero.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    min-height: 75vh;
+    background-color: rgb(0 0 0 / 0.4);
+    background-blend-mode: overlay;
+    display: flex;
+    padding-top: 3.75rem;
+    flex-direction: column;
+
+
+    @include big{
+        background-image: url(./images/desktop/image-hero.jpg);
+        background-size: 100% 90%;
+        gap: calc((20/100) * 80vh);
+        @media (min-height: 40rem) {
+            gap: calc((25/100) * 80vh);
+        }
+        
+        min-height: 80vh;
+    }
+}
+
+.intro-section__header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include big{
+
+    }
+}
+
+.intro-section__header--navigation{
+    &.slide{
+        transition: transform .3s ease;
+    }
+
+    position: absolute;
+    inset: 0;
+    z-index: 1000;
+    &[aria-expanded=true]{
+        transform: translateY(0%);
+    }
+    &[aria-expanded=false]{
+        @include mobile{
+            transform: translateY(-102%);
+        }
+    }
+    background-color: $black;
+    @include px(1.5rem);
+    @include py(3.75rem);
+
+    @include big{
+        position: initial;
+        background-color: initial;
+        @include px(initial);
+        @include py(inherit);
+    }
+}
+    .intro-section__header--navigation-header{
+        display:  flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @include big{
+            display: none;
+        }
+    }
+
+    .nav-list{
+        display: flex;
+        @include my(20vh);
+        flex-direction: column;
+        gap: 1rem;
+
+        @include big{
+            @include my(initial);
+            flex-direction: row;
+            gap: 1.5rem;
+        }
+    }
+
+    .nav-list__item{
+        @include py(.5rem);
+        position: relative;
+
+        @include big{
+            &:hover::after{
+                transform: scale(100%);
+            }
+
+            &::after{
+                height: 2px;
+                text-align: center;
+                content: '';
+                width: 50%;
+                position: absolute;
+                background-color: $white;
+                inset: auto 50% 0 0%;
+                margin-left: 25%;
+                transform-origin: center;
+                transform: scale(0%);
+                transition: transform .2s ease;
+            }
+
+        }
+    }
+
+    .nav-list__link{
+        color: $white !important;
+        @include josefin;
+        text-transform: uppercase;
+        font-size: 1.75rem;
+        text-align: center;
+        height: 100%;
+
+        @include big{
+            @include alata;
+            text-transform: initial;
+            font-size: $primary-font-size;
+        }
+    }
+
+    .navbar-toggler-btn{
+        display: inline-block;
+
+        @include big{
+            display: none;
+        }
+    }
+
+.intro-section__content{
+    @include border-solid(2px, $white);
+    @include py(2rem);
+    @include px(2rem);
+    width: 100%;
+    @include my(15vh);
+    font-size: $primary-font-size;
+
+    h3{
+        text-transform: uppercase;
+        color: $white;
+        letter-spacing: .25rem;
+        @include josefin;
+        
+        line-height: 1;
+
+        @include big{
+            font-size: 4em;
+        }
+
+        @include md{
+            font-size: 3em;
+        }
+
+        @include small{
+            font-size: 2.25em;
+        }
+    
+        @include mobile{
+            font-size: 2em;
+        }
+    }
+
+    @include big{
+        @include my(-5vh);
+        font-size: 1rem;
+        width: 60%;
+        @include py(2.5rem);
+        @include px(2.5rem);
+    }
+
+    @include xsm{
+        font-size: .5rem;
+    }
+}

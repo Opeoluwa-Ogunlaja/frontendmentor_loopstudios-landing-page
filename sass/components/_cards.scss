@@ -1,0 +1,9 @@
+@each $image-name, $image  in $images {
+    .card__#{$image-name}{
+        background-image: url(./images/mobile/image-#{$image}.jpg);
+
+        @include big{
+            background-image: url(./images/desktop/image-#{$image}.jpg);
+        }
+    }
+}
